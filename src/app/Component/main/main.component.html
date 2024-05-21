@@ -1,0 +1,25 @@
+<div class="header">
+    <div class="logo" (click)="navigateToLogin()">
+      <!-- לוגו מעוצב -->
+      <h1>My Job Portal</h1>
+    </div>
+    <div class="user-info">
+      <span>{{ userName }}</span>
+      <a [routerLink]="'/ListJobs/' + jobField">{{ jobField }}</a>
+      <span>{{ resumesSent }} קו"ח נשלחו</span>
+    </div>
+  </div>
+  
+  <div class="content">
+    <!-- תוכן האתר יוצג כאן -->
+    <ng-content></ng-content>
+  </div>
+  
+  <div class="footer">
+    <div class="contact-info">
+      <span>פרטי יצירת קשר:</span>
+      <span>מנהל האתר: 054-1234567</span>
+      <span>מייל: adminxample.com</span>
+    </div>
+  </div>
+  

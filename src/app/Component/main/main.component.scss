@@ -1,0 +1,80 @@
+$primary-color: #4CAF50;
+$secondary-color: #f8f8f8;
+$text-color: #333;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.header, .footer {
+  background-color: $secondary-color;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid $primary-color;
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.header .logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.header .logo h1 {
+  font-size: 24px;
+  color: $primary-color;
+  margin: 0;
+}
+
+.header .user-info {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.header .user-info span {
+  margin: 0 10px;
+  color: $text-color;
+}
+
+.header .user-info a {
+  color: $primary-color;
+  text-decoration: none;
+}
+
+.header .user-info a:hover {
+  text-decoration: underline;
+}
+
+.content {
+  padding: 40px;
+  background-color: #fff;
+}
+
+.footer {
+  background-color: $secondary-color;
+  padding: 20px;
+  border-top: 2px solid $primary-color;
+  text-align: center;
+}
+
+.footer .contact-info {
+  font-size: 14px;
+  color: $text-color;
+}
+
+.footer .contact-info span {
+  display: block;
+  margin: 5px 0;
+}
