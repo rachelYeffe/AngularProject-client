@@ -19,6 +19,9 @@ export class NameJobComponent {
         Hybrid: false
 
     }
+    getEnumValue(fieldValue: number): string {
+        return field[fieldValue];
+    }
     flag: Boolean = false
     viewItems() {
         this.flag = !this.flag;
