@@ -50,23 +50,24 @@ import { field } from '../../Models/Field';
 })
 export class ListJobsComponent implements OnInit {
   listJobs: Job[] = [];
-  filter: Job = {
-    field: field.QA,
-    requirements: "",
-    scopeOfHours: 0,
-    area: "string",
-    Hybrid: false
-  };
+  // filter: Job = {
+  //   field: field.QA,
+  //   requirements: "",
+  //   scopeOfHours: 0,
+  //   area: "string",
+  //   Hybrid: false
+  // };
 
   constructor(private jobService: JobService, private route: ActivatedRoute) { }
-
+   filter:string ="";
   ngOnInit(): void {
     this.jobService.getAllJobs().subscribe((res: Job[]) => {
       this.listJobs = res;
       this.route.params.subscribe(params => {
-        this.filter.field = params['Job'];
-        console.log(this.filter);
-        // this.filterJobs();
+        this.filter = params['Job'];
+        // console.log(this.fieldd);
+        if(this.filter!=null)
+             this.filterJobs();
       });
     });
   }
