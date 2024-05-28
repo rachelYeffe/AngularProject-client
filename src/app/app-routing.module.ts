@@ -5,9 +5,16 @@ import { MainComponent } from './Component/main/main.component';
 import { ListJobsComponent } from './Component/list-jobs/list-jobs.component';
 
 const routes: Routes = [
+
   { path: 'Login', component: LoginComponent },
-  { path: 'Main', component: MainComponent },
-  { path: 'ListJobs/:Job', component: ListJobsComponent }
+  {
+    path: '', component: MainComponent,
+    children: [
+      { path: 'ListJobs', component: ListJobsComponent },
+      { path: 'ListJobs/:Job', component: ListJobsComponent }
+    ]
+  },
+
 ];
 
 @NgModule({

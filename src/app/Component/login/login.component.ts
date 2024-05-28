@@ -27,7 +27,7 @@ export class LoginComponent {
       if (this.connectUser) {
         localStorage.setItem('user',JSON.stringify(this.connectUser));
         alert("you are connected😊");
-        this.router.navigate(['/Main']);
+        this.router.navigate(['/ListJobs']);
       } else {
         alert("😒");
       }
