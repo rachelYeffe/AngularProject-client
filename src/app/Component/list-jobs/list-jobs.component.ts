@@ -37,11 +37,83 @@
 //     Hybrid: false};
 
 // }
+
+
+
+
+
+
+
+
+
+
+// ============================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+// import { Component, OnInit } from '@angular/core';
+// import { Job } from '../../Models/Job';
+// import { JobService } from '../../Services/job.service';
+// import { ActivatedRoute } from '@angular/router';
+// import { field } from '../../Models/Field';
+// import { FilterService } from '../../Services/filter.service';
+
+// @Component({
+//   selector: 'app-list-jobs',
+//   templateUrl: './list-jobs.component.html',
+//   styleUrls: ['./list-jobs.component.scss']
+// })
+// export class ListJobsComponent implements OnInit {
+//   listJobs: Job[] = [];
+//   // filter: Job = {
+//   //   field: field.QA,
+//   //   requirements: "",
+//   //   scopeOfHours: 0,
+//   //   area: "string",
+//   //   Hybrid: false
+//   // };
+
+//   constructor(private jobService: JobService, private route: ActivatedRoute, private filterService: FilterService) { }
+//   filter: string = "";
+//   ngOnInit(): void {
+//     this.jobService.getAllJobs().subscribe((res: Job[]) => {
+//       this.listJobs = res;
+//       this.route.params.subscribe(params => {
+//         this.filter = params['Job'];
+//         if (this.filter != null)
+//           this.filterJobs();
+//       });
+//     });
+//   }
+
+//   filterJobs() {
+//     console.log(this.listJobs);
+//     this.listJobs = this.jobService.filter(this.filter, this.listJobs);
+//   }
+
+//   filterArea($event: { area: string, field: string }) {
+//     this.filterService.filter($event.area, $event.field).subscribe(res=>this.listJobs = res);
+//   }
+// }
+
+
+
+
+
 import { Component, OnInit } from '@angular/core';
 import { Job } from '../../Models/Job';
 import { JobService } from '../../Services/job.service';
 import { ActivatedRoute } from '@angular/router';
-import { field } from '../../Models/Field';
+import { FilterService } from '../../Services/filter.service';
 
 @Component({
   selector: 'app-list-jobs',
@@ -50,24 +122,17 @@ import { field } from '../../Models/Field';
 })
 export class ListJobsComponent implements OnInit {
   listJobs: Job[] = [];
-  // filter: Job = {
-  //   field: field.QA,
-  //   requirements: "",
-  //   scopeOfHours: 0,
-  //   area: "string",
-  //   Hybrid: false
-  // };
+  filter: string = "";
 
-  constructor(private jobService: JobService, private route: ActivatedRoute) { }
-   filter:string ="";
+  constructor(private jobService: JobService, private route: ActivatedRoute, private filterService: FilterService) { }
+
   ngOnInit(): void {
     this.jobService.getAllJobs().subscribe((res: Job[]) => {
       this.listJobs = res;
       this.route.params.subscribe(params => {
         this.filter = params['Job'];
-        // console.log(this.fieldd);
-        if(this.filter!=null)
-             this.filterJobs();
+        if (this.filter != null)
+          this.filterJobs();
       });
     });
   }
@@ -75,5 +140,9 @@ export class ListJobsComponent implements OnInit {
   filterJobs() {
     console.log(this.listJobs);
     this.listJobs = this.jobService.filter(this.filter, this.listJobs);
+  }
+
+  filterArea($event: { area: string, field: string }) {
+    this.filterService.filter($event.area, $event.field).subscribe(res => this.listJobs = res);
   }
 }

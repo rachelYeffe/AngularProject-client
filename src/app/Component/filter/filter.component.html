@@ -1,0 +1,29 @@
+<!-- <form [formGroup]="form">
+    <select formControlName="select"  (change)="filter($event.target)">
+        <option value="Haifa">Haifa</option>
+        <option value="Jerusalem">Jerusalem</option>
+        <option value="Tel Aviv">Tel Aviv</option>
+    </select>
+    <select formControlName="select"  (change)="filter($event.target)">
+        <option value="QA">QA</option>
+        <option value="Server">Server</option>
+        <option value="Client">Client</option>
+    </select>
+    <button (click)="filter()">filter</button>
+</form> -->
+<form [formGroup]="form">
+    <select formControlName="area">
+      <option value="Haifa">Haifa</option>
+      <option value="Jerusalem">Jerusalem</option>
+      <option value="Tel Aviv">Tel Aviv</option>
+    </select>
+    
+    <select formControlName="field">
+      <option value="QA">QA</option>
+      <option value="Server">Server</option>
+      <option value="Client">Client</option>
+    </select>
+    
+    <button (click)="filter()">Filter</button>
+  </form>
+  
