@@ -30,7 +30,6 @@
 
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { FilterService } from '../../Services/filter.service';
 
 @Component({
   selector: 'app-filter',
@@ -40,10 +39,10 @@ import { FilterService } from '../../Services/filter.service';
 export class FilterComponent {
   form: FormGroup;
 
-  constructor(private filterService: FilterService) {
+  constructor() {
     this.form = new FormGroup({
-      area: new FormControl(''),
-      field: new FormControl('')
+      area: new FormControl('Haifa'),
+      field: new FormControl('QA')
     });
   }
 
