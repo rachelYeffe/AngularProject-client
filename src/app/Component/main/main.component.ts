@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { MainService } from '../../Services/main.service';
+import { JobDetailsComponent } from '../jobDetails/jobDetails.component';
+import { Subscription } from 'rxjs';
+import { JobService } from '../../Services/job.service';
 
 @Component({
   selector: 'app-main',
@@ -7,29 +11,48 @@ import { Router } from '@angular/router';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  userName: string = 'אורח';
-  jobField: string = 'לא צויין';
-  resumesSent: number = 0;
+  userName: string = 'guest';
+  jobField: string = 'empty';
+  // resumesSent: number = 0;
+countOfCV:string='0';
+private submitClickedSubscription: Subscription;
+  constructor(private router: Router,private mainService:MainService,private jobService:JobService) {
+    // this.countOfCV=this.mainService.count;
+    this.submitClickedSubscription = this.jobService.countCV$.subscribe(
+      (value) => {
+        if (localStorage.getItem('countCV')) {
+          const countCVValue = localStorage.getItem('countCV');
+          if (countCVValue !== null) {
+            this.countOfCV = countCVValue;
+          }
+        }
+        
 
-  constructor(private router: Router) { }
-
+   } )
+   }
   ngOnInit(): void {
     if (this.isLocalStorageAvailable()) {
+      this.navigateToJobs();
       const user = JSON.parse(localStorage.getItem('user') || '{}');
-      this.userName = user.name || 'אורח';
-      this.jobField = user.fieldSearch || 'לא צויין';
-      this.resumesSent = user.resumesSent || 0;
+      if(user.name!=null){
+        this.userName = user.name ;
+        this.jobField = user.fieldSearch ;
+      }
+      else
+      this.navigateToLogin();
+
     } else {
       console.warn('Local storage is not available.');
+      // this.navigateToLogin();
     }
   }
 
   navigateToLogin(): void {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/Login']);
   }
 
   navigateToJobs(): void {
-    this.router.navigate(['/jobs'], { queryParams: { field: this.jobField } });
+    this.router.navigate(['/ListJobs'] );
   }
 
   private isLocalStorageAvailable(): boolean {
