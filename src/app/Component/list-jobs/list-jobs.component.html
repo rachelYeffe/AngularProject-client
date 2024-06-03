@@ -1,6 +1,6 @@
-<div>
-    <div *ngFor="let j of listJobs let i = index">
-        <app-name-job [nameJob]="j"></app-name-job>
+<div class="alice-jobs">
+    <div *ngFor="let job of listJobs; let i = index" class="job-item">
+        <app-name-job [nameJob]="job"></app-name-job>
     </div>
-    <app-filter (filterChanged)="filterArea($event)"></app-filter>
+    <app-filter class="app-filter" (filterChanged)="filterArea($event)"></app-filter>
 </div>
