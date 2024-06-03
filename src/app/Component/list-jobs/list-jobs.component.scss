@@ -1,0 +1,20 @@
+
+.alice-jobs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.job-item {
+    margin-bottom: 10px;
+}
+
+.app-filter {
+    position: absolute;
+    top: 100px;
+    right: 150px;
+}
