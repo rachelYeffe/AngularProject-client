@@ -36,7 +36,6 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Job } from '../../Models/Job';
 import { field } from '../../Models/Field';
-import { MainService } from '../../Services/main.service';
 import { JobService } from '../../Services/job.service';
 
 @Component({

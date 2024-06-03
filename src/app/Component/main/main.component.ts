@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MainService } from '../../Services/main.service';
 import { JobDetailsComponent } from '../jobDetails/jobDetails.component';
 import { Subscription } from 'rxjs';
 import { JobService } from '../../Services/job.service';
@@ -16,8 +15,7 @@ export class MainComponent implements OnInit {
   // resumesSent: number = 0;
 countOfCV:string='0';
 private submitClickedSubscription: Subscription;
-  constructor(private router: Router,private mainService:MainService,private jobService:JobService) {
-    // this.countOfCV=this.mainService.count;
+  constructor(private router: Router,private jobService:JobService) {
     this.submitClickedSubscription = this.jobService.countCV$.subscribe(
       (value) => {
         if (localStorage.getItem('countCV')) {
