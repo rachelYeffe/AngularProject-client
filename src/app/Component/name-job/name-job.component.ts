@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output , EventEmitter} from '@angular/core';
 import { Job } from '../../Models/Job';
 import { field } from '../../Models/Field';
 
@@ -9,6 +9,8 @@ import { field } from '../../Models/Field';
     styleUrl: './name-job.component.scss'
 })
 export class NameJobComponent {
+
+  
     @Input()
     nameJob: Job = {
 
@@ -26,4 +28,14 @@ export class NameJobComponent {
     viewItems() {
         this.flag = !this.flag;
     }
+    @Output()
+     jobName: EventEmitter<string> = new EventEmitter<string>();
+
+   
+     sendNameOfJob(){
+        this.jobName.emit(field[this.nameJob.field]);
+     }
+
+   
+     
 }

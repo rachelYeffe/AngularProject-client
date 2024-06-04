@@ -13,7 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ListJobsComponent implements OnInit {
   listJobs: Job[] = [];
   filter: string = "";
-
+  listJobsCV: string[] = [];
+  sentMoreOne: boolean = false;
   constructor(private jobService: JobService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -34,5 +35,10 @@ export class ListJobsComponent implements OnInit {
 
   filterArea($event: { area: string, field: string }) {
     this.jobService.filterAreaField($event.area, $event.field).subscribe(res => this.listJobs = res);
+  }
+  addTolistJobsCV($event: any) {
+    this.sentMoreOne = true;
+    this.listJobsCV.push($event);
+
   }
 }

@@ -1,6 +1,12 @@
 <div class="alice-jobs">
     <div *ngFor="let job of listJobs; let i = index" class="job-item">
-        <app-name-job [nameJob]="job"></app-name-job>
+        <app-name-job [nameJob]="job" (jobName)="addTolistJobsCV($event)"></app-name-job>
     </div>
     <app-filter class="app-filter" (filterChanged)="filterArea($event)"></app-filter>
+    <div *ngIf="sentMoreOne">List of posted jobs
+    <div *ngFor="let nameJob of listJobsCV">
+        <div>{{ nameJob }}</div>
+    </div>
 </div>
+</div>
+
