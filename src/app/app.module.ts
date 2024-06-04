@@ -11,6 +11,7 @@ import { JobDetailsComponent } from './Component/jobDetails/jobDetails.component
 import { ListJobsComponent } from './Component/list-jobs/list-jobs.component';
 import { NameJobComponent } from './Component/name-job/name-job.component';
 import { FilterComponent } from './Component/filter/filter.component';
+import { ButtonStylingDirective } from './directives/button-styling.directive';
 
 
 
@@ -22,7 +23,8 @@ import { FilterComponent } from './Component/filter/filter.component';
     JobDetailsComponent,
     ListJobsComponent,
     NameJobComponent,
-    FilterComponent
+    FilterComponent,
+    ButtonStylingDirective
   ],
   imports: [
     BrowserModule,
