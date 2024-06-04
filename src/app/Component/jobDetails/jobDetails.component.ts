@@ -37,6 +37,7 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Job } from '../../Models/Job';
 import { field } from '../../Models/Field';
 import { JobService } from '../../Services/job.service';
+import { MainService } from '../../Services/main.service';
 
 @Component({
   selector: 'app-job-details',
@@ -44,7 +45,7 @@ import { JobService } from '../../Services/job.service';
   styleUrls: ['./jobDetails.component.scss']
 })
 export class JobDetailsComponent {
-  constructor(private jobService: JobService) {}
+  constructor(private mainService: MainService) {}
 
   @Input()
   job: Job = {
@@ -56,14 +57,15 @@ export class JobDetailsComponent {
   };
 
   @Output()
-  count: EventEmitter<number> = new EventEmitter<number>();
+  nameJob: EventEmitter<string> = new EventEmitter<string>();
 
   
   countCV(event: any) {
     const selectedFile = event.target.files[0];
-    if(selectedFile)
-      this.jobService.setCountCV(1);
-    // this.mainService.addToCv();
+    if(selectedFile){
+      this.mainService.setCountCV(1);
+      this.nameJob.emit();
+    }
   }
 }
 

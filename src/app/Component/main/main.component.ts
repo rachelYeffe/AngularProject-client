@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { JobDetailsComponent } from '../jobDetails/jobDetails.component';
 import { Subscription } from 'rxjs';
 import { JobService } from '../../Services/job.service';
+import { MainService } from '../../Services/main.service';
 
 @Component({
   selector: 'app-main',
@@ -15,18 +16,19 @@ export class MainComponent implements OnInit {
   // resumesSent: number = 0;
 countOfCV:string='0';
 private submitClickedSubscription: Subscription;
-  constructor(private router: Router,private jobService:JobService) {
-    this.submitClickedSubscription = this.jobService.countCV$.subscribe(
+  constructor(private router: Router,private mainService:MainService) {
+    this.submitClickedSubscription = this.mainService.countCV$.subscribe(
       (value) => {
-        if (localStorage.getItem('countCV')) {
-          const countCVValue = localStorage.getItem('countCV');
-          if (countCVValue !== null) {
-            this.countOfCV = countCVValue;
-          }
-        }
-        
-
-   } )
+        // const user = JSON.parse(localStorage.getItem("user") || "{}");
+        // const userName = user.name || "defaultUser";
+        // const storedCount = localStorage.getItem(userName);
+        // if (storedCount !== null) {
+        //   this.countOfCV = storedCount;
+        // } else {
+        //   this.countOfCV = "0"
+        this.countOfCV=value.toString();
+        // }
+      })
    }
   ngOnInit(): void {
     if (this.isLocalStorageAvailable()) {

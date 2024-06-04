@@ -25,26 +25,6 @@ export class JobService {
       .pipe(map(jobs => jobs.filter(job => job.area === area && field[job.field].toString() === fieldd)));
   }
  
-  sumCV:string='0';
-count=0;
-  private countCV = new BehaviorSubject<number>(0);
-  countCV$ = this.countCV.asObservable();
-  setCountCV(number: number) {
-    if(this.sumCV=='0')
-      {
-        const countCVValue = localStorage.getItem('countCV');
-        if (countCVValue !== null) {
-          this.sumCV = countCVValue;
-          this.count=parseInt(this.sumCV)+1;
-        }
-      }
-  else{
-    this.count++;
 
-  }
-    this.sumCV=this.count.toString();
-   localStorage.setItem("countCV",this.sumCV.toString());
-    this.countCV.next(0);
-  }
 
 }
